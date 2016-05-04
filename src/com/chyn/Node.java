@@ -8,4 +8,5 @@ public class Node {
     Node left;
     Node right;
     Node next;
+    Node prev;
 }
