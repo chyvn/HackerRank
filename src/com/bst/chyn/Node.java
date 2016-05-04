@@ -8,7 +8,8 @@ public class Node {
     Node left;
     Node right;
 
-    private Node insert(Node root, int data){
+
+    public Node insert(Node root, int data){
         if(root == null){
             root = new Node();
             root.data = data;
@@ -16,6 +17,7 @@ public class Node {
             root.right = null;
             return root;
         }
+
         else{
             Node temp = root;
             if(data > temp.data){
@@ -42,7 +44,7 @@ public class Node {
         return root;
     }
 
-    private void Inorder(Node root){
+    public void Inorder(Node root){
         if(root != null){
             if(root.left != null) Inorder(root.left);
             System.out.print(root.data + " ");
@@ -50,7 +52,7 @@ public class Node {
         }
     }
 
-    private void Preorder(Node root){
+    public void Preorder(Node root){
         if(root != null){
             System.out.print(root.data + " ");
             if(root.left != null) Preorder(root.left);
@@ -58,7 +60,7 @@ public class Node {
         }
     }
 
-    private void Postorder(Node root){
+    public void Postorder(Node root){
         if(root != null){
             if(root.left != null) Postorder(root.left);
             if(root.right != null) Postorder(root.right);
