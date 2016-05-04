@@ -4,40 +4,25 @@ package com.chyn;
  * Created by chyn on 04-May-16.
  */
 public class nodeAtPosN {
-    private Node function(Node root, int data, int position) {
-        if (root == null) {
-            root = new Node();
-            root.data = data;
-            root.next = null;
-            return root;
+    private Node function(Node head, int data, int position) {
+        if (head == null) {
+            head = new Node();
+            head.data = data;
+            head.next = null;
+            return head;
         } else {
             //first find the length of linked list
-            int length = 0;
-            Node temp = root;
-            while (temp != null) {
+            Node temp = head;
+            while(position > 0 && temp.next != null){
                 temp = temp.next;
-                ++length;
+                position--;
+            }
+            Node newNode = new Node();
+            newNode.data = data;
+            newNode.next = temp.next;
+            temp.next = newNode;
             }
             //find the exact position to insert the node in. (L - N)
-            if (length - position > 0){
-                int index = length - position;
-                temp = root;
-                while(index > 0){
-                    temp = temp.next;
-                }
-                Node newNode = new Node();
-                newNode.data = data;
-                newNode.next = temp.next;
-                temp.next = newNode;
-            }
-            else{
-                //not possible to insert it.
-                Node newNode = new Node();
-                newNode.data = data;
-                newNode.next = temp.next;
-                temp.next = newNode;
-            }
-        }
-        return root;
+        return head;
     }
 }
