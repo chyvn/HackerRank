@@ -5,14 +5,14 @@ package com.chyn;
  */
 public class mergeLinked {
 
-    Node Insert2(Node head,int data) {
+    Node Insert2(Node head, int data) {
         Node temp = head;
-        if(head == null) {
+        if (head == null) {
             head.data = data;
             head.next = null;
             return head;
         }
-        while(temp.next != null) temp = temp.next;
+        while (temp.next != null) temp = temp.next;
         Node new_node = new Node();
         new_node.data = data;
         temp.next = new_node;
@@ -22,35 +22,33 @@ public class mergeLinked {
     }
 
     Node MergeLists(Node headA, Node headB) {
-        Node temp = new Node();
-        temp = null;
-        if(headA == null) return headB;
-        else{
-            if(headB == null) return headA;
-            else{
-                while(headA != null || headB != null){
-                    if(headA.data > headB.data ){
+        Node temp = null;
+        if (headA != null) {
+            if (headB == null) return headA;
+            else {
+                while (headA != null || headB != null) {
+                    if (headA.data > headB.data) {
                         Insert2(temp, headB.data);
                         headB = headB.next;
-                    }
-                    else{
+                    } else {
                         Insert2(temp, headA.data);
                         headA = headA.next;
                     }
                 }
-                if(headA == null){
-                    while(headB != null){
+                if (headA == null) {
+                    while (headB != null) {
                         Insert2(temp, headB.data);
                         headB = headB.next;
                     }
-                }
-                else{
-                    while(headA != null){
+                } else {
+                    while (headA != null) {
                         Insert2(temp, headA.data);
                         headA = headA.next;
                     }
                 }
             }
+        } else {
+            return headB;
         }
         return temp;
     }
