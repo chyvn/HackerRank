@@ -44,11 +44,11 @@ public class Node {
         return root;
     }
 
-    public void Inorder(Node root){
-        if(root != null){
-            if(root.left != null) Inorder(root.left);
-            System.out.print(root.data + " ");
-            if(root.right != null) Inorder(root.right);
+    public void Inorder(){
+        if(this != null){
+            if(this.left != null) this.left.Inorder();
+            System.out.print(this.data + " ");
+            if(this.right != null) this.right.Inorder();
         }
     }
 

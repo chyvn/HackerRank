@@ -11,11 +11,12 @@ public class MainClass {
         * use insert function from Node class to add any new elements
         * use any of the traversals. */
 
-        root = root.insert(root, 9);
+        root = root.insert(null, 9);
         root = root.insert(root, 2);
         root = root.insert(root, 3);
         root = root.insert(root, 10);
 
         root.Postorder(root);
+        root.Inorder();
     }
 }
