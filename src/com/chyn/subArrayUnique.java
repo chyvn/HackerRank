@@ -1,14 +1,31 @@
 package com.chyn;
 
+import java.util.Scanner;
+
 /**
  * Created by v-vetula on 5/5/2016.
  */
 public class subArrayUnique {
     public static void main(String[] args) {
-        int n = 20;
-        int[] a = {1, 2, 3, 20, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 19, 1, 2, 3, 4};
-        int[] keyVal = new int[21];
-        int m = 5;
+
+        //getting scanner ready
+        Scanner scanner = new Scanner(System.in);
+        String mn = scanner.nextLine();
+
+        //reading m and n values
+        int n = Integer.parseInt(mn.toString().split(" ")[0]);
+        int m = Integer.parseInt(mn.toString().split(" ")[1]);
+
+        //initializing key value pair array.
+        int[] keyVal = new int[10000000];
+
+        //reading master array, and putting in the values.
+        int[] a = new int[n];
+        mn = scanner.nextLine().toString();
+        String[] mnArray = mn.split(" ");
+        for(int i = 0; i<n; i++){
+            a[i] = Integer.parseInt(mnArray[i]);
+        }
 
         //created a small sub array.
         int[] subArray = new int[m];
@@ -52,8 +69,5 @@ public class subArrayUnique {
         }
 
         System.out.println(max);
-        for (int i = index; i < index + m; i++) {
-            System.out.print(a[i] + " ");
-        }
     }
 }

@@ -16,7 +16,20 @@ public class MainClass {
         root = root.insert(root, 3);
         root = root.insert(root, 10);
 
-        root.Postorder(root);
+        //root.Postorder(root);
         root.Inorder();
+        System.out.println("");
+
+        sumNodes sumNodes = new sumNodes();
+        //sumNodes.sumNodeGenerate(root).Inorder();
+        int[] levelsums = sumNodes.levelSums(root);
+        for (int i = 0; i < levelsums.length && levelsums[i] != 0; i++)
+            System.out.println("At level " + (i + 1) + " the sum is : " + levelsums[i]);
+        System.out.println("");
+        sumNodes.sumNodeGenerate2(root).Inorder();
+        levelsums = sumNodes.levelSums(root);
+        System.out.println("");
+        for (int i = 0; i < levelsums.length && levelsums[i] != 0; i++)
+            System.out.println("At level " + (i + 1) + " the sum is : " + levelsums[i]);
     }
 }
