@@ -11,12 +11,16 @@ public class MainClass {
         * use insert function from Node class to add any new elements
         * use any of the traversals. */
 
-        root = root.insert(null, 9);
-        root = root.insert(root, 3);
+        root = root.insert(null, 8);
+        root = root.insert(root, 4);
+        root = root.insert(root, 9);
+        root = root.insert(root, 1);
         root = root.insert(root, 2);
+        root = root.insert(root, 3);
+        root = root.insert(root, 6);
+        root = root.insert(root, 5);
 
-        //root.Postorder(root);
-        root.Inorder();
+        root.Postorder(root);
         System.out.println("");
 
         /*
@@ -34,6 +38,7 @@ public class MainClass {
             */
 
         TreeOPs treeOPs = new TreeOPs();
-        System.out.println("Depth of the tree is : " + treeOPs.depth(root));
+        //System.out.println("Depth of the tree is : " + treeOPs.depth(root));
+        System.out.println("common ancestor of 1 and 6 is : " + treeOPs.lca(root, 1, 2).data);
     }
 }
