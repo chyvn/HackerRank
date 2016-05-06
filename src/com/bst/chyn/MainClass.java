@@ -12,14 +12,14 @@ public class MainClass {
         * use any of the traversals. */
 
         root = root.insert(null, 9);
-        root = root.insert(root, 2);
         root = root.insert(root, 3);
-        root = root.insert(root, 10);
+        root = root.insert(root, 2);
 
         //root.Postorder(root);
         root.Inorder();
         System.out.println("");
 
+        /*
         sumNodes sumNodes = new sumNodes();
         //sumNodes.sumNodeGenerate(root).Inorder();
         int[] levelsums = sumNodes.levelSums(root);
@@ -31,5 +31,9 @@ public class MainClass {
         System.out.println("");
         for (int i = 0; i < levelsums.length && levelsums[i] != 0; i++)
             System.out.println("At level " + (i + 1) + " the sum is : " + levelsums[i]);
+            */
+
+        TreeOPs treeOPs = new TreeOPs();
+        System.out.println("Depth of the tree is : " + treeOPs.depth(root));
     }
 }
