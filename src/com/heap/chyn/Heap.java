@@ -45,8 +45,42 @@ public class Heap {
         }
     }
 
-    int getMax(){
-        if(root == null) return -1;
+    int getMax() {
+        if (root == null) return -1;
         return root.data;
+    }
+
+    void remove(int data) {
+        Node target = getNode(data, root);
+
+        //get the last node's data, and place it in the target.
+        Node lastNode = parentQueue.get(parentQueue.size() - 1);
+
+        //remove the last node form it's parent
+        if (lastNode.parent.left == lastNode) lastNode.parent.left = null;
+        else lastNode.parent.right = null;
+        target.data = lastNode.data;
+
+        //operte on the target node, to place it in the appropriate level.
+        settleInPlace(target);
+    }
+
+    void settleInPlace(Node target) {
+        if (target.left != null) {
+            if (target.left.data > target.data) {
+                //swap them and settle the target left's data
+                int temp = target.data;
+                target.data = target.left.data;
+                target.left.data = temp;
+                settleInPlace(target.left);
+            }
+        }
+    }
+
+    Node getNode(int data, Node root) {
+        if (root.data == data) return root;
+        if (root.left != null) return getNode(data, root.left);
+        if (root.right != null) return getNode(data, root.right);
+        return null;
     }
 }
