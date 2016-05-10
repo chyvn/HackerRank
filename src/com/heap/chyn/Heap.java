@@ -2,6 +2,7 @@ package com.heap.chyn;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by v-vetula on 5/6/2016.
@@ -41,6 +42,10 @@ public class Heap {
                 newNode.data = newNode.parent.data;
                 newNode.parent.data = tempData;
                 newNode = newNode.parent;
+                if(newNode.parent == null){
+                    //we've reached the top of heap, so we are replacing the head
+                    root = newNode;
+                }
             }
         }
     }

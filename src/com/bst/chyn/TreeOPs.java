@@ -7,6 +7,7 @@ import com.chyn.*;
  */
 public class TreeOPs {
 
+
     //function to return the depth of a node on a BT.
     int depth(Node root) {
         int leftDepth = 0, rightDepth = 0;
@@ -23,4 +24,27 @@ public class TreeOPs {
         if (root.data < v1 && root.data < v2) return lca(root.right, v1, v2);
         return root;
     }
+
+    Node lcaLongestPath(Node root) {
+        ExtNode head = new ExtNode();
+        head.makeExt(root);
+        return root;
+    }
+
+    private class ExtNode extends Node {
+
+        int rightWeight, leftWeight;
+
+        void makeExt(Node root) {
+            if (root != null) {
+                this.data = root.data;
+                this.left = root.left;
+                this.right = root.right;
+            }
+            if (this.left != null) this.leftWeight = depth(this.left);
+            if (this.right != null) this.rightWeight = depth(this.right);
+
+        }
+    }
+
 }
