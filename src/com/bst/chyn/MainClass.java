@@ -19,6 +19,8 @@ public class MainClass {
         root = root.insert(root, 3);
         root = root.insert(root, 6);
         root = root.insert(root, 5);
+        root = root.insert(root, 10);
+
 
         root.Postorder(root);
         System.out.println("");
@@ -38,6 +40,8 @@ public class MainClass {
             */
 
         TreeOPs treeOPs = new TreeOPs();
+        System.out.println("longest path's LCA is " + treeOPs.longPath(root).data);
+
         //System.out.println("Depth of the tree is : " + treeOPs.depth(root));
         System.out.println("common ancestor of 1 and 6 is : " + treeOPs.lca(root, 1, 2).data);
     }

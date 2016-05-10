@@ -3,7 +3,7 @@ package com.chyn;
 /**
  * Created by v-vetula on 5/5/2016.
  */
-public class MaxSubArray {
+public class maxSubArray {
     public static void main(String[] args) {
         int n = 20;
         int[] a = {1, 2, 3, 20, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1};
