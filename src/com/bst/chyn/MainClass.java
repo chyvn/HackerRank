@@ -1,5 +1,7 @@
 package com.bst.chyn;
 
+import java.util.Random;
+
 /**
  * Created by v-vetula on 5/4/2016.
  */
@@ -11,23 +13,21 @@ public class MainClass {
         * use any of the traversals. */
         Node root = new Node();
 
-        root = root.insert(null, 8);
-        root = root.insert(root, 4);
-        root = root.insert(root, 9);
-        root = root.insert(root, 1);
-        root = root.insert(root, 2);
-        root = root.insert(root, 3);
-        root = root.insert(root, 6);
-        root = root.insert(root, 5);
-        root = root.insert(root, 10);
+        int i = 10000;
+        root = root.insert(null, 5000);
+        while(i>0){
+            --i;
+            Random random = new Random();
+            root.insert(root, (random.nextInt(10000) + 1));
+        }
 
 
-        root.Postorder(root);
-        System.out.println("");
+        root.Inorder();
 
         Search search = new Search();
-        System.out.println(search.bfs(root, 3));
-        System.out.println(search.dfs(root, 3));
+        System.out.print("bfs" + search.bfs(root, 7772));
+        System.out.print("dfs" + search.dfs(root, 7772));
+
         /*
         sumNodes sumNodes = new sumNodes();
         //sumNodes.sumNodeGenerate(root).Inorder();

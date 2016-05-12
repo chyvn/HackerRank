@@ -14,9 +14,10 @@ public class Search {
             Stack<Node> stack = new Stack<>();
             stack.push(root);
             System.out.println("Call stack is :");
+            int count = 0;
             while (!found && stack.size() > 0) {
                 Node temp = stack.pop();
-                System.out.println(temp.data);
+                System.out.println((++count) + " " +temp.data);
                 if (temp.data == key) found = true;
                 else {
                     if (temp.left != null) stack.push(temp.left);
@@ -36,10 +37,11 @@ public class Search {
             Stack<Node> stack = new Stack<>();
             stack.push(root);
             System.out.println("Call stack is :");
+            int count = 0;
             while (!found && stack.size() > 0) {
                 Node temp = stack.get(0);
                 stack.removeElementAt(0);
-                System.out.println(temp.data);
+                System.out.println((++count) + " " +temp.data);
                 if (temp.data == key) found = true;
                 else {
                     if (temp.left != null) stack.push(temp.left);
