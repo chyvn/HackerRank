@@ -1,5 +1,7 @@
 package com.heap.chyn;
 
+import com.hkr.math;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +44,7 @@ public class Heap {
                 newNode.data = newNode.parent.data;
                 newNode.parent.data = tempData;
                 newNode = newNode.parent;
-                if(newNode.parent == null){
+                if (newNode.parent == null) {
                     //we've reached the top of heap, so we are replacing the head
                     root = newNode;
                 }
@@ -70,16 +72,40 @@ public class Heap {
         settleInPlace(target);
     }
 
-    void settleInPlace(Node target) {
-        if (target.left != null) {
-            if (target.left.data > target.data) {
-                //swap them and settle the target left's data
-                int temp = target.data;
-                target.data = target.left.data;
-                target.left.data = temp;
-                settleInPlace(target.left);
-            }
+    int settleInPlace(Node target) {
+        //have to check the minimum of the left and right.
+        if (target.right == null) {
+            if (target.left != null) {
+                if (target.left.data > target.data) {
+                    //swap them
+                    int temp = target.data;
+                    target.data = target.left.data;
+                    target.left.data = temp;
+                    //call the corresponding functions.
+                    settleInPlace(target.left);
+                } else return 0;
+            } else return 0;
+        } else {
+            //find the max of left and right, and perform the same operation as above with that one.
+            int max = Math.max(target.left.data, target.right.data);
+            if (max > target.data) {
+                //do the thing
+                if (target.left.data == max) {
+                    int temp = target.left.data;
+                    target.left.data = target.data;
+                    target.data = temp;
+                    settleInPlace(target.left);
+                } else {
+                    int temp = target.right.data;
+                    target.right.data = target.data;
+                    target.data = temp;
+                    settleInPlace(target.right);
+                }
+            } else return 0;
         }
+        //if any of them are small, swap, and make a recursive call with the child who's value is changed.
+        //else just break
+        return 1;
     }
 
     Node getNode(int data, Node root) {
