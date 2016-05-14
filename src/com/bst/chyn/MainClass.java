@@ -62,18 +62,18 @@ public class MainClass {
         DoorsWindows problem = new DoorsWindows();
         int n = 6;
         int[][] array = new int[][]{
+                {0, 3, 2, 0, 0, 0},
+                {0, 2, 2, 0, 2, 0},
                 {0, 0, 0, 0, 2, 0},
+                {0, 0, 0, 2, 2, 0},
                 {0, 0, 0, 0, 2, 0},
-                {0, 0, 0, 0, 0, 0},
-                {0, 0, 2, 2, 2, 2},
-                {0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 3, 0, 0}
+                {0, 0, 0, 3, 2, 0}
         };
         DoorsWindows.MyNode root = problem.generateTree(n, array);
         problem.print(root, 1);
-        DoorsWindows.MyNode node = problem.getNearestDoor(0, 5, 6);
+        DoorsWindows.MyNode node = problem.getNearestDoor(5, 5, 6);
         if (node == null) {
-            System.out.println("The node is not found.");
+            System.out.println("There is no escape :( .");
         } else {
             System.out.println("It's found to be : " + node.data + " with key:" + node.key);
             if (node.left != null) System.out.println("whose left node is " + node.left.data);
