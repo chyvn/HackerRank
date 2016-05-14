@@ -39,8 +39,7 @@ public class Search {
             System.out.println("Call stack is :");
             int count = 0;
             while (!found && stack.size() > 0) {
-                Node temp = stack.get(0);
-                stack.removeElementAt(0);
+                Node temp = stack.remove(0);
                 System.out.println((++count) + " " +temp.data);
                 if (temp.data == key) found = true;
                 else {

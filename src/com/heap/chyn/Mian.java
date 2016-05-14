@@ -16,12 +16,12 @@ public class Mian {
         heap.insert(54);
         heap.insert(50);
         heap.insert(20);
-        heap.iterate(tmep);
+        //heap.iterate(tmep);
         heap.insert(14);
         heap.insert(90);
         heap.insert(59);
         heap.insert(77);
         heap.insert(18);
-        heap.iterate(tmep);
+        //heap.iterate(tmep);
     }
 }

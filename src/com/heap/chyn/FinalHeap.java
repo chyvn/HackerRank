@@ -8,46 +8,47 @@ import java.util.List;
  */
 public class FinalHeap {
 
-    public class Node{
+    public class Node {
         int data;
         Node left;
         Node right;
         Node parent;
 
-        Node(int data){
+        Node(int data) {
             this.data = data;
             this.left = null;
             this.right = null;
         }
     }
 
-    public class Heap{
+    public class Heap {
         Node root;
         List<Node> parentQueue = new LinkedList<>();
-        Heap(){
+
+        Heap() {
             root = null;
         }
 
-        boolean insert(int data){
-            if(root == null){
+        boolean insert(int data) {
+            if (root == null) {
                 root = new Node(data);
-                lastChild = root;
+                //lastChild = root;
                 parentQueue.add(root);
-            }
-            else{
+            } else {
                 Node temp = parentQueue.get(0);
                 Node newNode = new Node(data);
-                if(temp.left == null){
+                if (temp.left == null) {
                     //we can inset the new node on the left.
                     temp.left = newNode;
                     parentQueue.add(newNode);
-                }
-                else {
+                } else {
                     temp.right = newNode;
                     parentQueue.add(newNode);
                     parentQueue.remove(0);
                 }
             }
+            return false;
         }
+
     }
 }

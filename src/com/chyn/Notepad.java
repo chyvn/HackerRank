@@ -49,7 +49,9 @@ public class Notepad {
     }
 
     private static void undo() {
-
+        Ops ops = undoStack.pop();
+        String[] s = {ops.operation, ops.operand};
+        mapper(s);
     }
     /*
     1. append(W). append this string behind S.
@@ -57,6 +59,13 @@ public class Notepad {
     3. get(k). kth character on string S.
     4. undo(). (get has no effect on undo()).
     * */
+
+    private static void mapper(String[] command){
+        if (command[0].equals('1')) append(command[1]);
+        if (command[0].equals('2')) erase(command[1]);
+        if (command[0].equals('3')) get(command[1]);
+        if (command[0].equals('4')) undo();
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -66,10 +75,7 @@ public class Notepad {
             --ops;
 
             String[] command = scanner.nextLine().split(" ");
-            if (command[0].equals('1')) append(command[1]);
-            if (command[0].equals('2')) erase(command[1]);
-            if (command[0].equals('3')) get(command[1]);
-            if (command[0].equals('4')) undo();
+            mapper(command);
         }
     }
 }
