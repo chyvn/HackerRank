@@ -60,40 +60,53 @@ public class DoorsWindows {
     }
 
 
-    MyNode getNearestDoor(int x, int y, int n) {
+    int getNearestDoor(int x, int y, int n) {
         int key = x * n + y;
+        int level = 0;
+        int[] levelData = new int[n * n];
         boolean[] visited = new boolean[n * n];
         for (int i = 0; i < n * n; i++) {
             visited[i] = false;
         }
         if (nodeMap.get(key).data == 3) {
-            return nodeMap.get(key);
+            //return nodeMap.get(key);
+            return 0;
         } else {
             Stack<MyNode> keyStack = new Stack<>();
             keyStack.push(nodeMap.get(key));
             visited[key] = true;
             boolean found = false;
+            levelData[key] = 0;
             while (!found && keyStack.size() > 0) {
+
                 MyNode temp = keyStack.remove(0);
-                if (temp.data == 3) return temp;
+                if (temp.data == 3) return levelData[temp.key];
                 else {
                     visited[temp.key] = true;
-                    if (temp.bottom != null && temp.data != 2 && !visited[temp.bottom.key])
+                    if (temp.bottom != null && temp.data != 2 && !visited[temp.bottom.key]) {
                         keyStack.push(temp.bottom);
+                        levelData[temp.bottom.key] = levelData[temp.key] + 1;
+                    }
 
-                    if (temp.top != null && temp.data != 2 && !visited[temp.top.key])
+                    if (temp.top != null && temp.data != 2 && !visited[temp.top.key]) {
                         keyStack.push(temp.top);
+                        levelData[temp.top.key] = levelData[temp.key] + 1;
+                    }
 
-                    if (temp.right != null && temp.data != 2 && !visited[temp.right.key])
+                    if (temp.right != null && temp.data != 2 && !visited[temp.right.key]) {
                         keyStack.push(temp.right);
+                        levelData[temp.right.key] = levelData[temp.key] + 1;
+                    }
 
-                    if (temp.left != null && temp.data != 2 && !visited[temp.left.key])
+                    if (temp.left != null && temp.data != 2 && !visited[temp.left.key]) {
                         keyStack.push(temp.left);
+                        levelData[temp.left.key] = levelData[temp.key] + 1;
+                    }
 
                 }
             }
         }
-        return null;
+        return -1;
 
     }
 

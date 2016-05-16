@@ -13,6 +13,7 @@ public class MainClass {
         * use any of the traversals. */
     doors();
 
+        //treeSearch();
 
         /*
         sumNodes sumNodes = new sumNodes();
@@ -38,23 +39,24 @@ public class MainClass {
 
     }
 
-    void treeSearch(){
+    static void treeSearch(){
         Node root = new Node();
 
-        int i = 10000;
-        root = root.insert(null, 5000);
+        int i = 10;
+        root = root.insert(null, 5);
         while(i>0){
             --i;
-            Random random = new Random();
-            root.insert(root, (random.nextInt(10000) + 1));
+            //Random random = new Random();
+            root.insert(root, i);
         }
 
 
         root.Inorder();
 
         Search search = new Search();
-        System.out.print("bfs" + search.bfs(root, 7772));
-        System.out.print("dfs" + search.dfs(root, 7772));
+
+        System.out.print("bfs" + search.bfs(root, 6));
+        System.out.print("dfs" + search.dfs(root, 6));
     }
 
 
@@ -62,24 +64,21 @@ public class MainClass {
         DoorsWindows problem = new DoorsWindows();
         int n = 6;
         int[][] array = new int[][]{
-                {0, 3, 2, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0},
                 {0, 2, 2, 0, 2, 0},
-                {0, 0, 0, 0, 2, 0},
-                {0, 0, 0, 2, 2, 0},
-                {0, 0, 0, 0, 2, 0},
-                {0, 0, 0, 3, 2, 0}
+                {0, 2, 3, 0, 3, 0},
+                {0, 2, 0, 0, 0, 0},
+                {0, 2, 0, 0, 0, 3},
+                {0, 0, 0, 0, 2, 0}
         };
         DoorsWindows.MyNode root = problem.generateTree(n, array);
         problem.print(root, 1);
-        DoorsWindows.MyNode node = problem.getNearestDoor(5, 5, 6);
-        if (node == null) {
+        int node = problem.getNearestDoor(0, 0, 6);
+        if (node == -1) {
             System.out.println("There is no escape :( .");
-        } else {
-            System.out.println("It's found to be : " + node.data + " with key:" + node.key);
-            if (node.left != null) System.out.println("whose left node is " + node.left.data);
-            if (node.right != null) System.out.println("whose right node is " + node.right.data);
-            if (node.top != null) System.out.println("whose top node is " + node.top.data);
-            if (node.bottom != null) System.out.println("whose bottom node is " + node.bottom.data);
+        }
+        else{
+            System.out.print("A node was found at a distance of " + node);
         }
     }
 
