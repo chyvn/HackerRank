@@ -5,8 +5,8 @@ package com.chyn;
  */
 public class DoublyLL<T> {
 
-    Node root;
-    Node end;
+    Node<T> root;
+    Node<T> end;
 
     DoublyLL() {
         root = null;
@@ -18,16 +18,20 @@ public class DoublyLL<T> {
         Node next;
         Node prev;
 
-        Node(T data) {
+        public Node(T data) {
             this.data = data;
             next = null;
             prev = null;
+        }
+
+        public T get() {
+            return this.data;
         }
     }
 
     Node insert(T data) {
         if (root == null) {
-            root = new Node(data);
+            root = new Node<>(data);
             end = root;
             root.next = end;
             root.prev = end;
@@ -35,7 +39,7 @@ public class DoublyLL<T> {
             end.prev = root;
             return root;
         } else {
-            Node newNode = new Node(data);
+            Node newNode = new Node<>(data);
             newNode.next = end.next;
             newNode.prev = end;
             end = newNode;
