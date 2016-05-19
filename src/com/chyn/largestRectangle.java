@@ -2,6 +2,7 @@ package com.chyn;
 
 import javax.script.ScriptContext;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Created by v-vetula on 5/8/2016.
@@ -16,19 +17,28 @@ public class largestRectangle {
             array[index] = Integer.parseInt(input[index]);
         }
 
-        //traverse from the end and calculate the max element.
-        int[] maxNextToMe = new int[elements];
-        maxNextToMe[elements - 1] = 0;
         int max = 0;
-        for (int i = elements - 2; i >= 0; i--) {
-            if (array[i] <= array[i + 1]) {
-                maxNextToMe[i] = maxNextToMe[i + 1] + 1;
-                int val = array[i] * (maxNextToMe[i] + 1);
-                if (val > max) max = val;
-            } else {
-                maxNextToMe[i] = 0;
+        int topIndex;
+        int area;
+        Stack<Integer> stack = new Stack<>();
+
+        int i = 0;
+        while (i < elements) {
+            if (stack.isEmpty() || array[stack.peek()] <= array[i]) stack.push(i++);
+            else {
+                topIndex = stack.pop();
+                area = array[topIndex] * (stack.empty() ? i : i - stack.peek() - 1);
+
+                if (max < area) max = area;
             }
         }
+
+        while (!stack.empty()) {
+            topIndex = stack.pop();
+            area = array[topIndex] * (stack.empty() ? i : i - stack.peek() - 1);
+            if (max < area) max = area;
+        }
+
         System.out.print(max);
 
     }
